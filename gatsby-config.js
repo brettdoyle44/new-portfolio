@@ -40,6 +40,10 @@ module.exports = {
             variants: [`400`, `700`],
           },
           {
+            family: `Pacifico`,
+            variants: [`400`],
+          },
+          {
             family: `Ubuntu`,
             variants: [`400`, `700`, `900`],
           },

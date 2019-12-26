@@ -1,25 +1,21 @@
 import React from "react"
-// import { Link } from "gatsby"
 
-// import Layout from "../components/layout"
-// import Image from "../components/image"
-// import SEO from "../components/seo"
 import Navigation from "../components/navbar"
 import Work from "../components/work"
+import About from "../components/about"
+import Footer from "../components/footer"
 
-import styled from "styled-components"
-import "../images/star.css"
+import { Link } from "react-scroll"
+import styled, { createGlobalStyle } from "styled-components"
+import "../styles/star.css"
 import "bootstrap/dist/css/bootstrap.min.css"
-// import img from "../images/vincentiu-solomon-ln5drpv_ImI-unsplash.jpg"
 
-// const GlobalStyle = createGlobalStyle`
-//   body {
-//     background: black;
-//   }
-// `
+const GlobalStyle = createGlobalStyle`
+  background-color: #e7f0ff;
+`
+
 const BackImage = styled.div`
-  postion: relative;
-  margin-top: -225px;
+  postion: absolute;
   z-index: 1;
   height: 100vh;
   background-color: #24305e;
@@ -27,37 +23,50 @@ const BackImage = styled.div`
 `
 
 const StarContainer = styled.div`
-  width: 100%;
-  height: 100%;
+  width: 80%;
+  height: 90%;
   transform: rotateZ(45deg);
 `
 
-const HiHeader = styled.div`
+const Header = styled.div`
+  position: absolute;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%;
+  top: 25vh;
+  z-index: 2;
+`
+
+const Welcome = styled.h1`
   font-family: "Ubuntu", sans-serif;
+  text-align: center;
   font-size: 60px;
   line-height: 60px;
-  position: relative;
   text-transform: uppercase;
-  top: 25vh;
-  text-align: center;
   color: white;
   font-weight: 900;
-  z-index: 2;
 `
 
 const ContentOne = styled.p`
   font-family: "Ubuntu", sans-serif;
+  text-align: center;
+  color: white;
+  text-transform: uppercase;
   font-size: 26px;
   font-weight: 400;
 `
 
 const MainButton = styled.button`
-  position: relative;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
   background-color: rgba(0, 0, 0, 0);
   font-size: 18px;
   border: 3px solid #fff;
-  border-radius: 15px;
+  border-radius: 5px;
   text-transform: uppercase;
+  padding: 10px;
   overflow: hidden;
   color: #fff;
   width: 250px;
@@ -89,14 +98,23 @@ const MainButton = styled.button`
 
 const IndexPage = () => (
   <div>
-    <HiHeader>
-      hello and welcome
-      <br />
+    <Header>
+      <Welcome>hello and welcome</Welcome>
       <ContentOne>
         my name is <strong>brett</strong> and I build things with code.
       </ContentOne>
-      <MainButton>Get To Know Me</MainButton>
-    </HiHeader>
+      <MainButton>
+        <Link
+          to="navigation"
+          spy={true}
+          smooth={true}
+          offset={-60}
+          duration={500}
+        >
+          See My Work
+        </Link>
+      </MainButton>
+    </Header>
 
     <BackImage>
       <StarContainer>
@@ -108,7 +126,11 @@ const IndexPage = () => (
       </StarContainer>
     </BackImage>
     <Navigation />
+    <div id="portfolio" />
     <Work />
+    <About />
+    <Footer />
+    <GlobalStyle />
   </div>
 )
 
